@@ -7,7 +7,13 @@ cons - takes a little longer to set up vs. something more fully-featured like re
 
 What would I do differently next time? Use Remix - I like their focus on web fundamentals and the fact that 
 react-router is built-in. It would also allow us to render pages on the server, if we decide that's optimal for 
-performance or SEO reasons. 
+performance or SEO reasons.
+
+Set default route to `/admin` - this gives us flexibility to change the homepage as needed in future. Maybe add a 
+dashboard or similar. This particular table looks more like it belongs on an admin or settings page.
+
+Use RTK Query for its features such as: built-in caching, ability to transform payloads, handling of loading/error
+states, etc. In future could use whatever our chosen framework provides, e.g. loaders/actions with Remix.
 
 # Frontend Take-Home Assignment
 
