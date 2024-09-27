@@ -1,3 +1,14 @@
+# My Notes
+
+use vite to create the project
+pros - simple & blazing fast, allows me to pick & choose exactly what dependencies to use e.g. react-router for 
+client-side navigation, RTK Query for data fetching, etc.
+cons - takes a little longer to set up vs. something more fully-featured like remix or next
+
+What would I do differently next time? Use Remix - I like their focus on web fundamentals and the fact that 
+react-router is built-in. It would also allow us to render pages on the server, if we decide that's optimal for 
+performance or SEO reasons. 
+
 # Frontend Take-Home Assignment
 
 Welcome to the WorkOS Frontend Take-Home Assignment!
