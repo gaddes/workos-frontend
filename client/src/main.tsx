@@ -4,14 +4,18 @@ import "./main.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
+import { Provider as StoreProvider } from "react-redux";
 import { Theme } from "@radix-ui/themes";
 
+import { store } from "./store.ts";
 import { router } from "./main.routes.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Theme accentColor="violet">
-      <RouterProvider router={router} />
-    </Theme>
+    <StoreProvider store={store}>
+      <Theme accentColor="violet">
+        <RouterProvider router={router} />
+      </Theme>
+    </StoreProvider>
   </StrictMode>,
 );
