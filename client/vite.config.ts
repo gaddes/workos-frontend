@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       api: path.resolve(__dirname, "src/api"),
       utils: path.resolve(__dirname, "src/utils"),
+      components: path.resolve(__dirname, "src/components"),
     },
   },
 });

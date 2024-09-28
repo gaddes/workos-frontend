@@ -1,8 +1,10 @@
-import { Avatar, Flex, Table, Text, TextField } from "@radix-ui/themes";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { useState, useCallback, ChangeEvent } from "react";
+import { Avatar, Button, Flex, Strong, Table, Text } from "@radix-ui/themes";
+import { DotsHorizontalIcon, PlusIcon } from "@radix-ui/react-icons";
+
 import { useUsersQuery } from "api/workos.api.ts";
 import { formatUtcDate } from "utils/date";
-import { useState, useCallback, ChangeEvent } from "react";
+import { Search } from "components/Search/Search.tsx";
 
 export const Users = () => {
   const { data, isLoading, isUninitialized, isError } = useUsersQuery();
@@ -31,15 +33,13 @@ export const Users = () => {
 
   return (
     <Flex direction="column" gap="5">
-      <TextField.Root
-        placeholder="Search by name…"
-        size="2"
-        onChange={handleChange}
-      >
-        <TextField.Slot>
-          <MagnifyingGlassIcon height="16" width="16" />
-        </TextField.Slot>
-      </TextField.Root>
+      <Flex gap="2" justify="between">
+        <Search onChange={handleChange} placeholder="Search by name..." />
+
+        <Button onClick={() => alert("I'm not in scope 🥲")}>
+          <PlusIcon /> <Strong>Add user</Strong>
+        </Button>
+      </Flex>
 
       <Table.Root>
         <Table.Header>

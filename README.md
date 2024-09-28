@@ -24,3 +24,4 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - Filter pills for name, role, etc.
 - Add local timestamp to users table (e.g. PST)
 - Abstract Search component in Users table?
+- Why do Radix buttons not have `cursor: pointer` by default? Could fix this!

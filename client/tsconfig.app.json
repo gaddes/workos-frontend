@@ -8,6 +8,7 @@
     "paths": {
       "api/*": ["src/api/*"],
       "utils/*": ["src/utils/*"],
+      "components/*": ["src/components/*"],
     },
 
     /* Bundler mode */
