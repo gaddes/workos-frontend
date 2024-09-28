@@ -9,7 +9,7 @@ export const Root = () => {
   if (pathname === AppRoutes.Root) return <Navigate to={AppRoutes.Users} />;
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" gap="5">
       <Nav />
       <Outlet />
     </Flex>
