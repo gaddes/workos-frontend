@@ -1,10 +1,11 @@
 import { useState, useCallback, ChangeEvent } from "react";
 import { Avatar, Button, Flex, Strong, Table, Text } from "@radix-ui/themes";
-import { DotsHorizontalIcon, PlusIcon } from "@radix-ui/react-icons";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 import { useUsersQuery } from "api/workos.api.ts";
-import { formatUtcDate } from "utils/date";
+import { formatUtcDate } from "utils/date.ts";
 import { Search } from "components/Search/Search.tsx";
+import { MoreButton } from "./MoreButton/MoreButton.tsx";
 
 export const Users = () => {
   const { data, isLoading, isUninitialized, isError } = useUsersQuery();
@@ -41,7 +42,7 @@ export const Users = () => {
         </Button>
       </Flex>
 
-      <Table.Root>
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>User</Table.ColumnHeaderCell>
@@ -69,7 +70,9 @@ export const Users = () => {
               </Table.RowHeaderCell>
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
-              <Table.Cell>...</Table.Cell>
+              <Table.Cell>
+                <MoreButton />
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
