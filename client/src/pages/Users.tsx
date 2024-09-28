@@ -1,4 +1,4 @@
-import { Table } from "@radix-ui/themes";
+import { Avatar, Flex, Table, Text } from "@radix-ui/themes";
 import { useUsersQuery } from "api/workos.api.ts";
 import { formatUtcDate } from "utils/date";
 
@@ -29,7 +29,19 @@ export const Users = () => {
       <Table.Body>
         {data.data.map((user) => (
           <Table.Row key={user.id}>
-            <Table.RowHeaderCell>{`${user.first} ${user.last}`}</Table.RowHeaderCell>
+            <Table.RowHeaderCell>
+              <Flex gap="2" align="center">
+                <Avatar
+                  src={user.photo}
+                  fallback={user.first.substring(0, 1).toUpperCase()}
+                  radius="full"
+                  size="1"
+                />
+                <Text>
+                  {user.first} {user.last}
+                </Text>
+              </Flex>
+            </Table.RowHeaderCell>
             <Table.Cell>{user.role.name}</Table.Cell>
             <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
             <Table.Cell>...</Table.Cell>
