@@ -22,3 +22,4 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - Add timezone to rows in Users table
 - Order table rows by name, role, date, etc.
 - Filter pills for name, role, etc.
+- Add local timestamp to users table (e.g. PST)
