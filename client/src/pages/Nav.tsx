@@ -6,7 +6,7 @@ export const Nav = () => {
   const { pathname } = useLocation();
 
   return (
-    <Container>
+    <Container mb="5">
       <TabNav.Root>
         <TabNav.Link asChild active={pathname === AppRoutes.Users}>
           <Link to={AppRoutes.Users}>Users</Link>

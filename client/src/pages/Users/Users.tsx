@@ -6,6 +6,7 @@ import { useUsersQuery } from "api/workos.api.ts";
 import { formatUtcDate } from "utils/date.ts";
 import { Search } from "components/Search/Search.tsx";
 import { MoreButton } from "./MoreButton/MoreButton.tsx";
+import { TableFooter } from "./TableFooter/TableFooter.tsx";
 
 export const Users = () => {
   const { data, isLoading, isUninitialized, isError } = useUsersQuery();
@@ -54,9 +55,9 @@ export const Users = () => {
 
         <Table.Body>
           {filteredData.map((user) => (
-            <Table.Row key={user.id}>
+            <Table.Row key={user.id} align="center">
               <Table.RowHeaderCell>
-                <Flex gap="2" align="center">
+                <Flex gap="2">
                   <Avatar
                     src={user.photo}
                     fallback={user.first.substring(0, 1).toUpperCase()}
@@ -76,6 +77,8 @@ export const Users = () => {
             </Table.Row>
           ))}
         </Table.Body>
+
+        <TableFooter />
       </Table.Root>
     </Flex>
   );
