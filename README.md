@@ -23,3 +23,4 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - Order table rows by name, role, date, etc.
 - Filter pills for name, role, etc.
 - Add local timestamp to users table (e.g. PST)
+- Abstract Search component in Users table?
