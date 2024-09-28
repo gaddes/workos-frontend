@@ -18,3 +18,5 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 # Ideas for Improvements
 
 - Make root route a dashboard - move existing table to an `/admin` route
+- In Users table, be more resilient to user name i.e. what if user doesn't have both a first/last name?
+- Add timezone to rows in Users table
