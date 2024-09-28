@@ -15,6 +15,10 @@ dashboard or similar. This particular table looks more like it belongs on an adm
 Use RTK Query for its features such as: built-in caching, ability to transform payloads, handling of loading/error
 states, etc. In future could use whatever our chosen framework provides, e.g. loaders/actions with Remix.
 
+# Ideas for Improvements
+
+- Make root route a dashboard - move existing table to an `/admin` route
+
 # Frontend Take-Home Assignment
 
 Welcome to the WorkOS Frontend Take-Home Assignment!
