@@ -70,7 +70,7 @@ export const Users = () => {
               </Table.RowHeaderCell>
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
-              <Table.Cell>
+              <Table.Cell justify="end">
                 <MoreButton />
               </Table.Cell>
             </Table.Row>
