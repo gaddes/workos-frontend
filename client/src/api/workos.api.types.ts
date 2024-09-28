@@ -15,7 +15,13 @@ export interface UsersResponse {
   pages: number;
 }
 
-interface Role {
+type UserWithRole = Omit<User, "roleId"> & { role: Role };
+
+export type UsersWithRolesResponse = Omit<UsersResponse, "data"> & {
+  data: UserWithRole[];
+};
+
+export interface Role {
   id: string; // UUID
   createdAt: string;
   updatedAt: string;

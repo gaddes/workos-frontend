@@ -30,7 +30,7 @@ export const Users = () => {
         {data.data.map((user) => (
           <Table.Row key={user.id}>
             <Table.RowHeaderCell>{`${user.first} ${user.last}`}</Table.RowHeaderCell>
-            <Table.Cell>{user.roleId}</Table.Cell>
+            <Table.Cell>{user.role.name}</Table.Cell>
             <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
             <Table.Cell>...</Table.Cell>
           </Table.Row>
