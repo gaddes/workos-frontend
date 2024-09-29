@@ -9,6 +9,7 @@ import {
   UsersWithRolesResponse,
   RolesResponse,
   Role,
+  UsersArgs,
 } from "./workos.api.types.ts";
 import { USERS_ROUTE, ROLES_ROUTE } from "./workos.api.routes.ts";
 
@@ -16,9 +17,9 @@ export const workosApi = createApi({
   reducerPath: "workosApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3002/" }),
   endpoints: (builder) => ({
-    users: builder.query<UsersWithRolesResponse, void>({
-      async queryFn(_args, _api, _extraOptions, baseQuery) {
-        const usersPromise = baseQuery({ url: USERS_ROUTE });
+    users: builder.query<UsersWithRolesResponse, UsersArgs>({
+      async queryFn(queryString, _api, _extraOptions, baseQuery) {
+        const usersPromise = baseQuery({ url: `${USERS_ROUTE}${queryString}` });
         const rolesPromise = baseQuery({ url: ROLES_ROUTE });
 
         const [usersResult, rolesResult] = await Promise.all([

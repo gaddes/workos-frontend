@@ -21,6 +21,8 @@ export type UsersWithRolesResponse = Omit<UsersResponse, "data"> & {
   data: UserWithRole[];
 };
 
+export type UsersArgs = string;
+
 export interface Role {
   id: string; // UUID
   createdAt: string;
