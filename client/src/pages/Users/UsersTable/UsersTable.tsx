@@ -13,7 +13,11 @@ export const UsersTable = () => {
     useUsersQuery(queryString);
 
   if (isError) {
-    return <div>Error fetching users</div>;
+    return <Text>Error fetching users - please try again</Text>;
+  }
+
+  if (data && !data.data.length) {
+    return <Text>No matching results - please adjust your search term</Text>;
   }
 
   return (
