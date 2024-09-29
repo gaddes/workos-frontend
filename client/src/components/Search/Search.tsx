@@ -22,7 +22,7 @@ export const Search: React.FC<ISearch> = ({ placeholder }) => {
         return;
       }
 
-      setSearchParams({ search: e.target.value });
+      setSearchParams({ search: value });
     },
     [setSearchParams],
   );
