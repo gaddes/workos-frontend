@@ -2,7 +2,7 @@ import { Button, Flex, Strong } from "@radix-ui/themes";
 import { PlusIcon } from "@radix-ui/react-icons";
 
 import { Search } from "components/Search/Search.tsx";
-import { UsersTable } from "./UsersTable.tsx";
+import { UsersTable } from "./UsersTable/UsersTable.tsx";
 
 export const Users = () => (
   <Flex direction="column" gap="5">
