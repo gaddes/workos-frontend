@@ -1,5 +1,5 @@
 import { Avatar, Flex, Text, Table } from "@radix-ui/themes";
-import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { useUsersQuery } from "api/workos.api.ts";
 import { formatUtcDate } from "utils/date.ts";
@@ -8,10 +8,7 @@ import { MoreButton } from "./MoreButton/MoreButton.tsx";
 import { TableFooter } from "./TableFooter/TableFooter.tsx";
 
 export const UsersTable = () => {
-  const [searchParams] = useSearchParams();
-  const searchValue = searchParams.get("search");
-  const queryString = searchValue ? `?search=${searchValue}` : "";
-
+  const { search: queryString } = useLocation();
   const { data, isLoading, isUninitialized, isFetching, isError } =
     useUsersQuery(queryString);
 
@@ -59,7 +56,7 @@ export const UsersTable = () => {
         ))}
       </Table.Body>
 
-      <TableFooter />
+      {data.pages > 1 && <TableFooter />}
     </Table.Root>
   );
 };
