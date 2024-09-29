@@ -5,11 +5,12 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import omit from "lodash/omit";
 import {
-  UsersResponse,
-  UsersWithRolesResponse,
-  RolesResponse,
+  GetUsersResponse,
+  GetUsersWithRolesResponse,
+  GetRolesResponse,
   Role,
-  UsersArgs,
+  GetUsersArgs,
+  DeleteUserArgs,
 } from "./workos.api.types.ts";
 import { USERS_ROUTE, ROLES_ROUTE } from "./workos.api.routes.ts";
 
@@ -17,7 +18,7 @@ export const workosApi = createApi({
   reducerPath: "workosApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3002/" }),
   endpoints: (builder) => ({
-    getUsers: builder.query<UsersWithRolesResponse, UsersArgs>({
+    getUsers: builder.query<GetUsersWithRolesResponse, GetUsersArgs>({
       async queryFn(queryString, _api, _extraOptions, baseQuery) {
         const usersPromise = baseQuery({ url: `${USERS_ROUTE}${queryString}` });
         const rolesPromise = baseQuery({ url: ROLES_ROUTE });
@@ -32,8 +33,8 @@ export const workosApi = createApi({
         if (rolesResult.error)
           return { error: rolesResult.error as FetchBaseQueryError };
 
-        const usersData = usersResult.data as UsersResponse;
-        const rolesData = rolesResult.data as RolesResponse;
+        const usersData = usersResult.data as GetUsersResponse;
+        const rolesData = rolesResult.data as GetRolesResponse;
 
         return {
           data: {
@@ -50,6 +51,7 @@ export const workosApi = createApi({
     }),
 
     getRoles: builder.query<RolesResponse, void>({
+    getRoles: builder.query<GetRolesResponse, void>({
       query: () => ROLES_ROUTE,
     }),
   }),

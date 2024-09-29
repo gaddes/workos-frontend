@@ -8,7 +8,7 @@ interface User {
   photo: string; // URL
 }
 
-export interface UsersResponse {
+export interface GetUsersResponse {
   data: User[];
   next: number | null;
   prev: number | null;
@@ -17,11 +17,13 @@ export interface UsersResponse {
 
 export type UserWithRole = Omit<User, "roleId"> & { role: Role };
 
-export type UsersWithRolesResponse = Omit<UsersResponse, "data"> & {
+export type GetUsersWithRolesResponse = Omit<GetUsersResponse, "data"> & {
   data: UserWithRole[];
 };
 
-export type UsersArgs = string;
+export type GetUsersArgs = string; // query string
+
+export type DeleteUserArgs = string; // uuid for `user` object
 
 export interface Role {
   id: string; // UUID
@@ -32,7 +34,7 @@ export interface Role {
   description: string;
 }
 
-export interface RolesResponse {
+export interface GetRolesResponse {
   data: Role[];
   next: number | null;
   prev: number | null;
