@@ -5,7 +5,7 @@ import { useUsersQuery } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { formatUtcDate } from "utils/date.ts";
 
-import { MoreButton } from "./MoreButton/MoreButton.tsx";
+import { MoreActions } from "./MoreActions/MoreActions.tsx";
 
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
@@ -54,7 +54,7 @@ export const UsersTable = () => {
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
               <Table.Cell justify="end">
-                <MoreButton />
+                <MoreActions />
               </Table.Cell>
             </Table.Row>
           ))}

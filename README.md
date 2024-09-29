@@ -29,3 +29,4 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - Both Search and TableFooter components assume that the data they receive has a certain structure, i.e. a `pages` 
   property for the prev/next buttons, and that all endpoints use the `search` key for queries. 
 - TableFooter could be extended with a "slot" for other components e.g. total row count.
+- All button text in Figma appears bold - make common Button component to enforce this.
