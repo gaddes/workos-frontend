@@ -1,8 +1,8 @@
 import { Text } from "@radix-ui/themes";
-import { useRolesQuery } from "api/workos.api.ts";
+import { useGetRolesQuery } from "api/workos.api.ts";
 
 export const Roles = () => {
-  const { data } = useRolesQuery();
+  const { data } = useGetRolesQuery();
 
   console.log(data);
 

@@ -17,7 +17,7 @@ export const workosApi = createApi({
   reducerPath: "workosApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3002/" }),
   endpoints: (builder) => ({
-    users: builder.query<UsersWithRolesResponse, UsersArgs>({
+    getUsers: builder.query<UsersWithRolesResponse, UsersArgs>({
       async queryFn(queryString, _api, _extraOptions, baseQuery) {
         const usersPromise = baseQuery({ url: `${USERS_ROUTE}${queryString}` });
         const rolesPromise = baseQuery({ url: ROLES_ROUTE });
@@ -49,10 +49,10 @@ export const workosApi = createApi({
       },
     }),
 
-    roles: builder.query<RolesResponse, void>({
+    getRoles: builder.query<RolesResponse, void>({
       query: () => ROLES_ROUTE,
     }),
   }),
 });
 
-export const { useUsersQuery, useRolesQuery } = workosApi;
+export const { useGetUsersQuery, useGetRolesQuery } = workosApi;

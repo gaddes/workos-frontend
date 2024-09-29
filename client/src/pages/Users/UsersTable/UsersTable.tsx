@@ -1,7 +1,7 @@
 import { Avatar, Flex, Text, Table, Skeleton } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 
-import { useUsersQuery } from "api/workos.api.ts";
+import { useGetUsersQuery } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { formatUtcDate } from "utils/date.ts";
 
@@ -10,7 +10,7 @@ import { MoreActions } from "./MoreActions/MoreActions.tsx";
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
   const { data, isLoading, isUninitialized, isFetching, isError } =
-    useUsersQuery(queryString);
+    useGetUsersQuery(queryString);
 
   if (isError) {
     return <Text>Error fetching users - please try again</Text>;
