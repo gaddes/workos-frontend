@@ -1,5 +1,0 @@
-@import '../../../../../node_modules/@radix-ui/colors/gray.css';
-
-.tableFooter {
-  border-top: 1px solid var(--gray-5);
-}

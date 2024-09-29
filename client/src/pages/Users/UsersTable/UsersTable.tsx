@@ -2,10 +2,10 @@ import { Avatar, Flex, Text, Table, Skeleton } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 
 import { useUsersQuery } from "api/workos.api.ts";
+import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { formatUtcDate } from "utils/date.ts";
 
 import { MoreButton } from "./MoreButton/MoreButton.tsx";
-import { TableFooter } from "./TableFooter/TableFooter.tsx";
 
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
@@ -53,7 +53,7 @@ export const UsersTable = () => {
           ))}
         </Table.Body>
 
-        {data?.pages && data?.pages > 1 && <TableFooter />}
+        <TableFooter data={data} />
       </Table.Root>
     </Skeleton>
   );

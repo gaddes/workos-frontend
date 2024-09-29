@@ -25,3 +25,6 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - Add local timestamp to users table (e.g. PST)
 - Abstract Search component in Users table?
 - Why do Radix buttons not have `cursor: pointer` by default? Could fix this!
+- Both Search and TableFooter components assume that the data they receive has a certain structure, i.e. a `pages` 
+  property for the prev/next buttons, and that all endpoints use the `search` key for queries. 
+- TableFooter could be extended with a "slot" for other components e.g. total row count.
