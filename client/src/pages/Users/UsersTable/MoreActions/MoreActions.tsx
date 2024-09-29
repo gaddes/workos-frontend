@@ -2,6 +2,8 @@ import * as React from "react";
 import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
+import { UserWithRole } from "api/workos.api.types.ts";
+
 import styles from "./MoreActions.module.css";
 import {
   MoreActionsContext,
@@ -44,8 +46,12 @@ const MoreActionsComponent = () => {
   );
 };
 
-export const MoreActions = () => (
-  <MoreActionsProvider>
+interface IMoreActions {
+  user: UserWithRole;
+}
+
+export const MoreActions: React.FC<IMoreActions> = ({ user }) => (
+  <MoreActionsProvider user={user}>
     <MoreActionsComponent />
   </MoreActionsProvider>
 );

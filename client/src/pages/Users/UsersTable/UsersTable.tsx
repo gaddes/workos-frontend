@@ -54,7 +54,7 @@ export const UsersTable = () => {
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
               <Table.Cell justify="end">
-                <MoreActions />
+                <MoreActions user={user} />
               </Table.Cell>
             </Table.Row>
           ))}

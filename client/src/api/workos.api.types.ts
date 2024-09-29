@@ -15,7 +15,7 @@ export interface UsersResponse {
   pages: number;
 }
 
-type UserWithRole = Omit<User, "roleId"> & { role: Role };
+export type UserWithRole = Omit<User, "roleId"> & { role: Role };
 
 export type UsersWithRolesResponse = Omit<UsersResponse, "data"> & {
   data: UserWithRole[];
