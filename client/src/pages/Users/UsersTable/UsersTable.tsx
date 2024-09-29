@@ -17,7 +17,10 @@ export const UsersTable = () => {
   }
 
   return (
-    <Skeleton loading={isLoading || isUninitialized || isFetching}>
+    <Skeleton
+      aria-label="loading users table"
+      loading={isLoading || isUninitialized || isFetching}
+    >
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>

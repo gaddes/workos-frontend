@@ -4,7 +4,12 @@ import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import styles from "./MoreButton.module.css";
 
 export const MoreButton = () => (
-  <IconButton className={styles.iconButton} variant="ghost" color="gray">
+  <IconButton
+    aria-label="more actions"
+    className={styles.iconButton}
+    variant="ghost"
+    color="gray"
+  >
     <DotsHorizontalIcon />
   </IconButton>
 );
