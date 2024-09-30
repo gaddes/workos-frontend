@@ -40,6 +40,7 @@ const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
           className={styles.iconButton}
           variant="ghost"
           color="gray"
+          radius="full"
           onClick={openDropdown}
           onKeyDown={handleKeyDown}
         >

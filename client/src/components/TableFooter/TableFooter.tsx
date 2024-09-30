@@ -34,7 +34,7 @@ export const TableFooter: React.FC<ITableFooter> = ({ data }) => {
           <Flex gap="2" justify="end" my="2" mr="3">
             <Button
               size="1"
-              variant="outline"
+              variant={data?.prev ? "outline" : "solid"}
               color="gray"
               onClick={loadPreviousPage}
               disabled={!data?.prev}
@@ -43,7 +43,7 @@ export const TableFooter: React.FC<ITableFooter> = ({ data }) => {
             </Button>
             <Button
               size="1"
-              variant="outline"
+              variant={data?.next ? "outline" : "solid"}
               color="gray"
               onClick={loadNextPage}
               disabled={!data?.next}
