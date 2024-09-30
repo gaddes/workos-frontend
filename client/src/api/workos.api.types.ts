@@ -44,3 +44,10 @@ export interface GetRolesResponse {
 }
 
 export type GetRolesArgs = string; // query string
+
+export interface UpdateRoleArgs {
+  id: string; // uuid for `role` object
+  name: string;
+  description: string;
+  isDefault: boolean;
+}

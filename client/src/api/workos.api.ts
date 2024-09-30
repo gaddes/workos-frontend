@@ -12,6 +12,7 @@ import {
   GetUsersArgs,
   DeleteUserArgs,
   GetRolesArgs,
+  UpdateRoleArgs,
 } from "./workos.api.types.ts";
 import { USERS_ROUTE, ROLES_ROUTE } from "./workos.api.routes.ts";
 
@@ -61,6 +62,15 @@ export const workosApi = createApi({
       invalidatesTags: (_result, error) => (error ? [] : ["Users"]),
     }),
 
+    updateRole: builder.mutation<void, UpdateRoleArgs>({
+      query: ({ id, ...args }) => ({
+        url: `${ROLES_ROUTE}/${id}`,
+        method: "PATCH",
+        body: args,
+      }),
+      invalidatesTags: (_result, error) => (error ? [] : ["Roles"]),
+    }),
+
     getRoles: builder.query<GetRolesResponse, GetRolesArgs>({
       query: (queryString) => `${ROLES_ROUTE}${queryString}`,
       providesTags: ["Roles"],
@@ -68,5 +78,9 @@ export const workosApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery, useGetRolesQuery, useDeleteUserMutation } =
-  workosApi;
+export const {
+  useGetUsersQuery,
+  useGetRolesQuery,
+  useDeleteUserMutation,
+  useUpdateRoleMutation,
+} = workosApi;

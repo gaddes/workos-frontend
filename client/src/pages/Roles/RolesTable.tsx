@@ -1,7 +1,7 @@
-import { Text, Table, Skeleton } from "@radix-ui/themes";
+import { Text, Table, Skeleton, TextField, TextArea } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 
-import { useGetRolesQuery } from "api/workos.api.ts";
+import { useGetRolesQuery, useUpdateRoleMutation } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { MoreActions, Edit } from "components/MoreActions";
 
@@ -9,6 +9,8 @@ export const RolesTable = () => {
   const { search: queryString } = useLocation();
   const { data, isLoading, isUninitialized, isFetching, isError } =
     useGetRolesQuery(queryString);
+
+  const [updateRole] = useUpdateRoleMutation();
 
   if (isError) {
     return <Text>Error fetching roles - please try again</Text>;
@@ -41,7 +43,36 @@ export const RolesTable = () => {
               <Table.Cell>{role.isDefault.toString()}</Table.Cell>
               <Table.Cell justify="end">
                 <MoreActions>
-                  <Edit />
+                  <Edit
+                    onClick={updateRole}
+                    initialValues={{
+                      id: role.id,
+                      name: role.name,
+                      description: role.description,
+                      isDefault: role.isDefault,
+                    }}
+                  >
+                    <Edit.Title>Edit role</Edit.Title>
+                    <Edit.Description>
+                      Update the selected role
+                    </Edit.Description>
+                    <Edit.SubmitText>Update role</Edit.SubmitText>
+                    <Edit.FormElement
+                      as={TextField.Root}
+                      name="name"
+                      label="Name"
+                    />
+                    <Edit.FormElement
+                      as={TextArea}
+                      name="description"
+                      label="Description"
+                    />
+                    <Edit.FormElement
+                      type="checkbox"
+                      name="isDefault"
+                      label="Default"
+                    />
+                  </Edit>
                 </MoreActions>
               </Table.Cell>
             </Table.Row>
