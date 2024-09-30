@@ -11,6 +11,7 @@ import { useDeleteUserMutation } from "api/workos.api.ts";
 import { MoreActionsContext } from "../MoreActions.context.tsx";
 
 export const Delete = () => {
+  const [open, setOpen] = React.useState(false);
   const context = React.useContext(MoreActionsContext);
   const [deleteUser] = useDeleteUserMutation();
 
@@ -20,9 +21,12 @@ export const Delete = () => {
     );
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Prevent AlertDialog closing (we only want this behaviour when the API call is successful)
+    e.preventDefault();
+
     try {
-      await deleteUser({ id: context.user.id });
+      await deleteUser({ id: context.user.id }).unwrap();
       context.setOpen(false);
     } catch {
       console.error("Failed to delete user");
@@ -30,9 +34,13 @@ export const Delete = () => {
   };
 
   return (
-    <AlertDialog.Root>
+    <AlertDialog.Root open={open} onOpenChange={setOpen}>
       <AlertDialog.Trigger>
-        <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+        <DropdownMenu.Item
+          shortcut="⌘ ⌫"
+          color="red"
+          onClick={() => setOpen(true)}
+        >
           Delete
         </DropdownMenu.Item>
       </AlertDialog.Trigger>

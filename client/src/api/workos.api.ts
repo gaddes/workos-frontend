@@ -57,7 +57,7 @@ export const workosApi = createApi({
         url: `${USERS_ROUTE}/${args.id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Users"],
+      invalidatesTags: (_result, error) => (error ? [] : ["Users"]),
     }),
 
     getRoles: builder.query<GetRolesResponse, void>({
