@@ -23,7 +23,9 @@ export type GetUsersWithRolesResponse = Omit<GetUsersResponse, "data"> & {
 
 export type GetUsersArgs = string; // query string
 
-export type DeleteUserArgs = string; // uuid for `user` object
+export interface DeleteUserArgs {
+  id: string; // uuid for `user` object
+}
 
 export interface Role {
   id: string; // UUID

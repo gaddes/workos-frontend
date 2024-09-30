@@ -17,6 +17,7 @@ import { USERS_ROUTE, ROLES_ROUTE } from "./workos.api.routes.ts";
 export const workosApi = createApi({
   reducerPath: "workosApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3002/" }),
+  tagTypes: ["Users", "Roles"],
   endpoints: (builder) => ({
     getUsers: builder.query<GetUsersWithRolesResponse, GetUsersArgs>({
       async queryFn(queryString, _api, _extraOptions, baseQuery) {
@@ -48,13 +49,23 @@ export const workosApi = createApi({
           },
         };
       },
+      providesTags: ["Users"],
     }),
 
-    getRoles: builder.query<RolesResponse, void>({
+    deleteUser: builder.mutation<void, DeleteUserArgs>({
+      query: (args) => ({
+        url: `${USERS_ROUTE}/${args.id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Users"],
+    }),
+
     getRoles: builder.query<GetRolesResponse, void>({
       query: () => ROLES_ROUTE,
+      providesTags: ["Roles"],
     }),
   }),
 });
 
-export const { useGetUsersQuery, useGetRolesQuery } = workosApi;
+export const { useGetUsersQuery, useGetRolesQuery, useDeleteUserMutation } =
+  workosApi;

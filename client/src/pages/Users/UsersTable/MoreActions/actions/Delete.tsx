@@ -7,10 +7,12 @@ import {
   Strong,
 } from "@radix-ui/themes";
 
+import { useDeleteUserMutation } from "api/workos.api.ts";
 import { MoreActionsContext } from "../MoreActions.context.tsx";
 
 export const Delete = () => {
   const context = React.useContext(MoreActionsContext);
+  const [deleteUser] = useDeleteUserMutation();
 
   if (!context) {
     throw new Error(
@@ -18,10 +20,13 @@ export const Delete = () => {
     );
   }
 
-  const deleteUser = () => {
-    console.log(`Deleting user with id: ${context.user.id}`);
-    // Only close modal if API call is successful!
-    context.setOpen(false);
+  const handleDelete = async () => {
+    try {
+      await deleteUser({ id: context.user.id });
+      context.setOpen(false);
+    } catch {
+      console.error("Failed to delete user");
+    }
   };
 
   return (
@@ -48,7 +53,7 @@ export const Delete = () => {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button variant="surface" color="red" onClick={deleteUser}>
+            <Button variant="surface" color="red" onClick={handleDelete}>
               <Strong>Delete user</Strong>
             </Button>
           </AlertDialog.Action>
