@@ -15,7 +15,7 @@ import styles from "./Edit.module.css";
 import { IEdit, IEditComponent } from "./Edit.types.ts";
 import { EditTitle } from "./EditTitle.tsx";
 import { EditSubmitText } from "./EditSubmitText.tsx";
-import { EditFormElement } from "./EditFormElement.tsx";
+import { EditFormField } from "./EditFormField.tsx";
 import { EditDescription } from "./EditDescription.tsx";
 
 export const EditComponent: React.FC<IEditComponent> = ({
@@ -49,7 +49,7 @@ export const EditComponent: React.FC<IEditComponent> = ({
 
   const formElements = React.Children.toArray(children).filter((child) => {
     // @ts-expect-error - this component only accepts ReactElements
-    return "type" in child ? child.type === Edit.FormElement : false;
+    return "type" in child ? child.type === Edit.FormField : false;
   });
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -134,4 +134,4 @@ export const Edit: IEdit = ({
 Edit.Title = EditTitle;
 Edit.Description = EditDescription;
 Edit.SubmitText = EditSubmitText;
-Edit.FormElement = EditFormElement;
+Edit.FormField = EditFormField;

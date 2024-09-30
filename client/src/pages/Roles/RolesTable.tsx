@@ -64,17 +64,17 @@ export const RolesTable = () => {
                       Update the selected role
                     </Edit.Description>
                     <Edit.SubmitText>Update role</Edit.SubmitText>
-                    <Edit.FormElement
+                    <Edit.FormField
                       as={TextField.Root}
                       name="name"
                       label="Name"
                     />
-                    <Edit.FormElement
+                    <Edit.FormField
                       as={TextArea}
                       name="description"
                       label="Description"
                     />
-                    <Edit.FormElement
+                    <Edit.FormField
                       type="checkbox"
                       name="isDefault"
                       label="Default"

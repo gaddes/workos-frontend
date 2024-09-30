@@ -4,7 +4,7 @@ import { TypedMutationTrigger } from "@reduxjs/toolkit/query/react";
 import { EditTitle } from "./EditTitle.tsx";
 import { EditDescription } from "./EditDescription.tsx";
 import { EditSubmitText } from "./EditSubmitText.tsx";
-import { EditFormElement } from "./EditFormElement.tsx";
+import { EditFormField } from "./EditFormField.tsx";
 
 interface IEditProps {
   // Would spend more time typing this correctly in prod
@@ -18,7 +18,7 @@ export interface IEdit extends React.FC<IEditProps> {
   Title: typeof EditTitle;
   Description: typeof EditDescription;
   SubmitText: typeof EditSubmitText;
-  FormElement: typeof EditFormElement;
+  FormField: typeof EditFormField;
 }
 
 export interface IEditComponent {

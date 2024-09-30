@@ -9,7 +9,7 @@ interface IEditFormElement {
   type?: string; // e.g. "checkbox"
 }
 
-export const EditFormElement: React.FC<IEditFormElement> = ({
+export const EditFormField: React.FC<IEditFormElement> = ({
   as,
   name,
   label,
