@@ -24,7 +24,7 @@ export const EditComponent: React.FC<IEditComponent> = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const context = React.useContext(MoreActionsContext);
-  const { values, isSubmitting, setSubmitting } = useFormikContext();
+  const { values, errors, isSubmitting, setSubmitting } = useFormikContext();
 
   if (!context) {
     throw new Error(
@@ -55,6 +55,11 @@ export const EditComponent: React.FC<IEditComponent> = ({
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // Prevent AlertDialog closing (we only want this behaviour when the API call is successful)
     e.preventDefault();
+
+    if (Object.keys(errors).length) {
+      console.error("please fix errors before submitting");
+      return;
+    }
 
     setSubmitting(true);
 
@@ -111,8 +116,17 @@ export const EditComponent: React.FC<IEditComponent> = ({
   );
 };
 
-export const Edit: IEdit = ({ initialValues, children, ...props }) => (
-  <Formik initialValues={initialValues} onSubmit={() => {}}>
+export const Edit: IEdit = ({
+  initialValues,
+  validationSchema,
+  children,
+  ...props
+}) => (
+  <Formik
+    initialValues={initialValues}
+    validationSchema={validationSchema}
+    onSubmit={() => {}}
+  >
     <EditComponent {...props}>{children}</EditComponent>
   </Formik>
 );

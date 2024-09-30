@@ -1,9 +1,15 @@
 import { Text, Table, Skeleton, TextField, TextArea } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
+import * as Yup from "yup";
 
 import { useGetRolesQuery, useUpdateRoleMutation } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { MoreActions, Edit } from "components/MoreActions";
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("Please add a name"),
+  description: Yup.string().required("Please add a description"),
+});
 
 export const RolesTable = () => {
   const { search: queryString } = useLocation();
@@ -51,6 +57,7 @@ export const RolesTable = () => {
                       description: role.description,
                       isDefault: role.isDefault,
                     }}
+                    validationSchema={validationSchema}
                   >
                     <Edit.Title>Edit role</Edit.Title>
                     <Edit.Description>

@@ -11,6 +11,7 @@ interface IEditProps {
   onClick: TypedMutationTrigger<any, any, any>;
   children: React.ReactNode;
   initialValues: any;
+  validationSchema: any;
 }
 
 export interface IEdit extends React.FC<IEditProps> {
