@@ -23,6 +23,12 @@ const MoreActionsComponent = () => {
   const openDropdown = () => context.setOpen(true);
   const closeDropdown = () => context.setOpen(false);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "Enter") {
+      openDropdown();
+    }
+  };
+
   return (
     <DropdownMenu.Root open={context.open}>
       <DropdownMenu.Trigger>
@@ -32,6 +38,7 @@ const MoreActionsComponent = () => {
           variant="ghost"
           color="gray"
           onClick={openDropdown}
+          onKeyDown={handleKeyDown}
         >
           <DotsHorizontalIcon />
         </IconButton>
