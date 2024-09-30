@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint workos-frontend",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "jsdom": "^25.0.1",
+    "msw": "^2.4.9",
     "prettier": "3.3.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
