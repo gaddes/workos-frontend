@@ -11,7 +11,7 @@ export enum AppRoutes {
   Roles = "/roles",
 }
 
-export const router = createBrowserRouter([
+export const routes = [
   {
     path: "/",
     element: <Root />,
@@ -27,4 +27,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routes);
