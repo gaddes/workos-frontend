@@ -8,6 +8,7 @@ import {
 } from "@radix-ui/themes";
 import * as RadixForm from "@radix-ui/react-form";
 import { Formik, Form, useFormikContext } from "formik";
+import toast from "react-hot-toast";
 
 import { MoreActionsContext } from "../../MoreActions.context.tsx";
 
@@ -57,7 +58,7 @@ export const EditComponent: React.FC<IEditComponent> = ({
     e.preventDefault();
 
     if (Object.keys(errors).length) {
-      console.error("please fix errors before submitting");
+      toast.error("Please fix errors before submitting");
       return;
     }
 
@@ -66,8 +67,9 @@ export const EditComponent: React.FC<IEditComponent> = ({
     try {
       await onClick(values).unwrap();
       context.setOpen(false);
+      toast.success("Item updated");
     } catch {
-      console.error("Error updating item. Please try again.");
+      toast.error("Error updating item. Please try again.");
     } finally {
       setSubmitting(false);
     }

@@ -1,5 +1,6 @@
 import { Avatar, Flex, Text, Table, Skeleton, Strong } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { useDeleteUserMutation, useGetUsersQuery } from "api/workos.api";
 import { TableFooter } from "components/TableFooter/TableFooter";
@@ -15,7 +16,8 @@ export const UsersTable = () => {
   const [deleteUser] = useDeleteUserMutation();
 
   if (isError) {
-    return <Text>Error fetching users - please try again</Text>;
+    toast.error("Error fetching users. Please try again.");
+    return <Text>Error fetching users. Please try again</Text>;
   }
 
   if (data && !data.data.length) {

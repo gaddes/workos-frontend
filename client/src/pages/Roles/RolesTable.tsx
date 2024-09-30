@@ -1,6 +1,7 @@
 import { Text, Table, Skeleton, TextField, TextArea } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 import { useGetRolesQuery, useUpdateRoleMutation } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
@@ -19,7 +20,8 @@ export const RolesTable = () => {
   const [updateRole] = useUpdateRoleMutation();
 
   if (isError) {
-    return <Text>Error fetching roles - please try again</Text>;
+    toast.error("Error fetching roles. Please try again.");
+    return <Text>Error fetching roles. Please try again</Text>;
   }
 
   if (data && !data.data.length) {

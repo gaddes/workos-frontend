@@ -6,6 +6,7 @@ import {
   Flex,
   Strong,
 } from "@radix-ui/themes";
+import toast from "react-hot-toast";
 
 import { MoreActionsContext } from "../../MoreActions.context.tsx";
 import { DeleteTitle } from "./DeleteTitle.tsx";
@@ -45,8 +46,9 @@ export const Delete: IDelete = ({ onClick, children }) => {
     try {
       await onClick().unwrap();
       context.setOpen(false);
+      toast.success("Item deleted");
     } catch {
-      console.error("Error deleting item. Please try again.");
+      toast.error("Error deleting item. Please try again.");
     }
   };
 
