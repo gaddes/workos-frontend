@@ -32,3 +32,4 @@ states, etc. In future could use whatever our chosen framework provides, e.g. lo
 - All button text in Figma appears bold - make common Button component to enforce this.
 - Add toast messages for API success/error states
 - Add number of users to Roles table (adjacent to role name)
+- Add more comprehensive tests: test error toasts, user clicking menu item, etc. (user-event)
