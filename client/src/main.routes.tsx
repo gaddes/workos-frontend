@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { GlobalError } from "./pages/GlobalError.tsx";
 import { Root } from "./pages/Root.tsx";
 import { Users } from "./pages/Users/Users.tsx";
-import { Roles } from "./pages/Roles.tsx";
+import { Roles } from "./pages/Roles/Roles.tsx";
 
 export enum AppRoutes {
   Root = "/",

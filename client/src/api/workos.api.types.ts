@@ -42,3 +42,5 @@ export interface GetRolesResponse {
   prev: number | null;
   pages: number;
 }
+
+export type GetRolesArgs = string; // query string

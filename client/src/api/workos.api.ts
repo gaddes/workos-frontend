@@ -11,6 +11,7 @@ import {
   Role,
   GetUsersArgs,
   DeleteUserArgs,
+  GetRolesArgs,
 } from "./workos.api.types.ts";
 import { USERS_ROUTE, ROLES_ROUTE } from "./workos.api.routes.ts";
 
@@ -60,8 +61,8 @@ export const workosApi = createApi({
       invalidatesTags: (_result, error) => (error ? [] : ["Users"]),
     }),
 
-    getRoles: builder.query<GetRolesResponse, void>({
-      query: () => ROLES_ROUTE,
+    getRoles: builder.query<GetRolesResponse, GetRolesArgs>({
+      query: (queryString) => `${ROLES_ROUTE}${queryString}`,
       providesTags: ["Roles"],
     }),
   }),
