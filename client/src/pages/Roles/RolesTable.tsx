@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { useGetRolesQuery } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
+import { MoreActions, Edit } from "components/MoreActions";
 
 export const RolesTable = () => {
   const { search: queryString } = useLocation();
@@ -38,7 +39,11 @@ export const RolesTable = () => {
               <Table.RowHeaderCell>{role.name}</Table.RowHeaderCell>
               <Table.Cell>{role.description}</Table.Cell>
               <Table.Cell>{role.isDefault.toString()}</Table.Cell>
-              <Table.Cell justify="end">foo</Table.Cell>
+              <Table.Cell justify="end">
+                <MoreActions>
+                  <Edit />
+                </MoreActions>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
