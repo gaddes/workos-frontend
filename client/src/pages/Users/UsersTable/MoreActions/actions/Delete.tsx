@@ -29,7 +29,7 @@ export const Delete = () => {
       await deleteUser({ id: context.user.id }).unwrap();
       context.setOpen(false);
     } catch {
-      console.error("Failed to delete user");
+      console.error("Error deleting user. Please try again.");
     }
   };
 
