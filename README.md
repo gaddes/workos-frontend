@@ -1,3 +1,22 @@
+# Screen Recordings
+
+## GET Users (w/ search & pagination)
+
+https://github.com/user-attachments/assets/fbabb95f-ff26-4bdd-a61d-68dd9618726d
+
+## DELETE user (w/ success toast)
+
+https://github.com/user-attachments/assets/8d6b7c78-87ad-4f34-ad96-c7539c22882f
+
+## GET & EDIT Roles
+
+https://github.com/user-attachments/assets/8215e1f2-7346-429b-a519-16426cee3715
+
+## Error & Empty states
+
+https://github.com/user-attachments/assets/a5a62dc8-ced0-4f72-9263-1a10eecfb19e
+
+
 # My Notes
 
 use vite to create the project
