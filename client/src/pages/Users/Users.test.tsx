@@ -19,6 +19,8 @@ describe("Users page", () => {
 
     expect(screen.getByRole("textbox")).toBeVisible();
     expect(screen.getByPlaceholderText(/search by name\.\.\./i)).toBeVisible();
+
+    expect(screen.getByRole("button", { name: /add user/i })).toBeVisible();
   });
 
   it("renders loading skeleton with accessible label", () => {
