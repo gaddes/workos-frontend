@@ -79,7 +79,7 @@ export const EditComponent: React.FC<IEditComponent> = ({
     <AlertDialog.Root open={open} onOpenChange={setOpen}>
       <AlertDialog.Trigger>
         <DropdownMenu.Item onClick={() => setOpen(true)}>
-          Edit
+          {title}
         </DropdownMenu.Item>
       </AlertDialog.Trigger>
 

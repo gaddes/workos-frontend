@@ -55,12 +55,8 @@ export const Delete: IDelete = ({ onClick, children }) => {
   return (
     <AlertDialog.Root open={open} onOpenChange={setOpen}>
       <AlertDialog.Trigger>
-        <DropdownMenu.Item
-          shortcut="⌘ ⌫"
-          color="red"
-          onClick={() => setOpen(true)}
-        >
-          Delete
+        <DropdownMenu.Item onClick={() => setOpen(true)}>
+          {title}
         </DropdownMenu.Item>
       </AlertDialog.Trigger>
       <AlertDialog.Content maxWidth="450px">
