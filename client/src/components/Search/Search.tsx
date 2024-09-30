@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSearchParams } from "react-router-dom";
-import { TextField } from "@radix-ui/themes";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { IconButton, TextField } from "@radix-ui/themes";
+import { Cross1Icon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 import styles from "./Search.module.css";
 
@@ -27,6 +27,19 @@ export const Search: React.FC<ISearch> = ({ placeholder }) => {
     [setSearchParams],
   );
 
+  const clearInput = React.useCallback(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
+
+  const handleKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key === "Enter") {
+        clearInput();
+      }
+    },
+    [clearInput],
+  );
+
   return (
     <TextField.Root
       className={styles.textField}
@@ -38,6 +51,19 @@ export const Search: React.FC<ISearch> = ({ placeholder }) => {
       <TextField.Slot>
         <MagnifyingGlassIcon height="16" width="16" />
       </TextField.Slot>
+      {searchValue && searchValue.length > 0 ? (
+        <TextField.Slot>
+          <IconButton
+            size="1"
+            variant="ghost"
+            color="gray"
+            onClick={clearInput}
+            onKeyDown={handleKeyDown}
+          >
+            <Cross1Icon height="14" width="14" />
+          </IconButton>
+        </TextField.Slot>
+      ) : null}
     </TextField.Root>
   );
 };
