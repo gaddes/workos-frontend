@@ -2,16 +2,19 @@ import * as React from "react";
 import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
-import { UserWithRole } from "api/workos.api.types.ts";
-
 import styles from "./MoreActions.module.css";
 import {
   MoreActionsContext,
   MoreActionsProvider,
 } from "./MoreActions.context.tsx";
-import { Delete } from "./actions/Delete.tsx";
 
-const MoreActionsComponent = () => {
+interface IMoreActionsComponent {
+  children: React.ReactNode;
+}
+
+const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
+  children,
+}) => {
   const context = React.useContext(MoreActionsContext);
 
   if (!context) {
@@ -47,18 +50,18 @@ const MoreActionsComponent = () => {
         onEscapeKeyDown={closeDropdown}
         onPointerDownOutside={closeDropdown}
       >
-        <Delete />
+        {children}
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );
 };
 
 interface IMoreActions {
-  user: UserWithRole;
+  children: React.ReactNode;
 }
 
-export const MoreActions: React.FC<IMoreActions> = ({ user }) => (
-  <MoreActionsProvider user={user}>
-    <MoreActionsComponent />
+export const MoreActions: React.FC<IMoreActions> = ({ children }) => (
+  <MoreActionsProvider>
+    <MoreActionsComponent>{children}</MoreActionsComponent>
   </MoreActionsProvider>
 );

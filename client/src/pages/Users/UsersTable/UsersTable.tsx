@@ -1,16 +1,19 @@
-import { Avatar, Flex, Text, Table, Skeleton } from "@radix-ui/themes";
+import { Avatar, Flex, Text, Table, Skeleton, Strong } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 
-import { useGetUsersQuery } from "api/workos.api.ts";
+import { useDeleteUserMutation, useGetUsersQuery } from "api/workos.api.ts";
 import { TableFooter } from "components/TableFooter/TableFooter.tsx";
 import { formatUtcDate } from "utils/date.ts";
 
-import { MoreActions } from "./MoreActions/MoreActions.tsx";
+import { MoreActions } from "components/MoreActions/MoreActions.tsx";
+import { Delete } from "components/MoreActions/actions/Delete/Delete.tsx";
 
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
   const { data, isLoading, isUninitialized, isFetching, isError } =
     useGetUsersQuery(queryString);
+
+  const [deleteUser] = useDeleteUserMutation();
 
   if (isError) {
     return <Text>Error fetching users - please try again</Text>;
@@ -54,7 +57,19 @@ export const UsersTable = () => {
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
               <Table.Cell justify="end">
-                <MoreActions user={user} />
+                <MoreActions>
+                  <Delete onClick={() => deleteUser({ id: user.id })}>
+                    <Delete.Title>Delete user</Delete.Title>
+                    <Delete.Description>
+                      Are you sure? The user{" "}
+                      <Strong>
+                        {user.first} {user.last}
+                      </Strong>{" "}
+                      will be permanently deleted.
+                    </Delete.Description>
+                    <Delete.SubmitText>Delete user</Delete.SubmitText>
+                  </Delete>
+                </MoreActions>
               </Table.Cell>
             </Table.Row>
           ))}

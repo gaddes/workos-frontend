@@ -28,6 +28,7 @@ export const RolesTable = () => {
             <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -37,6 +38,7 @@ export const RolesTable = () => {
               <Table.RowHeaderCell>{role.name}</Table.RowHeaderCell>
               <Table.Cell>{role.description}</Table.Cell>
               <Table.Cell>{role.isDefault.toString()}</Table.Cell>
+              <Table.Cell justify="end">foo</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

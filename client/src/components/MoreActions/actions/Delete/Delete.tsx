@@ -7,13 +7,15 @@ import {
   Strong,
 } from "@radix-ui/themes";
 
-import { useDeleteUserMutation } from "api/workos.api.ts";
-import { MoreActionsContext } from "../MoreActions.context.tsx";
+import { MoreActionsContext } from "../../MoreActions.context.tsx";
+import { DeleteTitle } from "./DeleteTitle.tsx";
+import { DeleteDescription } from "./DeleteDescription.tsx";
+import { DeleteSubmitText } from "./DeleteSubmitText.tsx";
+import { IDelete } from "./Delete.types.ts";
 
-export const Delete = () => {
+export const Delete: IDelete = ({ onClick, children }) => {
   const [open, setOpen] = React.useState(false);
   const context = React.useContext(MoreActionsContext);
-  const [deleteUser] = useDeleteUserMutation();
 
   if (!context) {
     throw new Error(
@@ -21,15 +23,30 @@ export const Delete = () => {
     );
   }
 
+  const title = React.Children.toArray(children).find((child) => {
+    // @ts-expect-error - this component only accepts ReactElements
+    return "type" in child ? child.type === Delete.Title : false;
+  });
+
+  const description = React.Children.toArray(children).find((child) => {
+    // @ts-expect-error - this component only accepts ReactElements
+    return "type" in child ? child.type === Delete.Description : false;
+  });
+
+  const submitText = React.Children.toArray(children).find((child) => {
+    // @ts-expect-error - this component only accepts ReactElements
+    return "type" in child ? child.type === Delete.SubmitText : false;
+  });
+
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // Prevent AlertDialog closing (we only want this behaviour when the API call is successful)
     e.preventDefault();
 
     try {
-      await deleteUser({ id: context.user.id }).unwrap();
+      await onClick().unwrap();
       context.setOpen(false);
     } catch {
-      console.error("Error deleting user. Please try again.");
+      console.error("Error deleting item. Please try again.");
     }
   };
 
@@ -45,13 +62,9 @@ export const Delete = () => {
         </DropdownMenu.Item>
       </AlertDialog.Trigger>
       <AlertDialog.Content maxWidth="450px">
-        <AlertDialog.Title>Delete user</AlertDialog.Title>
+        <AlertDialog.Title>{title}</AlertDialog.Title>
         <AlertDialog.Description size="2">
-          Are you sure? The user{" "}
-          <Strong>
-            {context.user.first} {context.user.last}
-          </Strong>{" "}
-          will be permanently deleted.
+          {description}
         </AlertDialog.Description>
 
         <Flex gap="3" mt="4" justify="end">
@@ -62,7 +75,7 @@ export const Delete = () => {
           </AlertDialog.Cancel>
           <AlertDialog.Action>
             <Button variant="surface" color="red" onClick={handleDelete}>
-              <Strong>Delete user</Strong>
+              {submitText}
             </Button>
           </AlertDialog.Action>
         </Flex>
@@ -70,3 +83,7 @@ export const Delete = () => {
     </AlertDialog.Root>
   );
 };
+
+Delete.Title = DeleteTitle;
+Delete.Description = DeleteDescription;
+Delete.SubmitText = DeleteSubmitText;
