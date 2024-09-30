@@ -13,16 +13,17 @@ interface ITableFooter {
 }
 
 export const TableFooter: React.FC<ITableFooter> = ({ data }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
 
   const loadPreviousPage = React.useCallback(() => {
-    setSearchParams({ page: `${data?.prev}` });
-  }, [data?.prev, setSearchParams]);
+    setSearchParams({ page: `${data?.prev}`, ...(search && { search }) });
+  }, [data?.prev, search, setSearchParams]);
 
   const loadNextPage = React.useCallback(() => {
-    setSearchParams({ page: `${data?.next}` });
-  }, [data?.next, setSearchParams]);
+    setSearchParams({ page: `${data?.next}`, ...(search && { search }) });
+  }, [data?.next, search, setSearchParams]);
 
   if (!data?.pages || data.pages < 2) return null;
 
