@@ -1,12 +1,11 @@
 import { Avatar, Flex, Text, Table, Skeleton, Strong } from "@radix-ui/themes";
 import { useLocation } from "react-router-dom";
 
-import { useDeleteUserMutation, useGetUsersQuery } from "api/workos.api.ts";
-import { TableFooter } from "components/TableFooter/TableFooter.tsx";
-import { formatUtcDate } from "utils/date.ts";
+import { useDeleteUserMutation, useGetUsersQuery } from "api/workos.api";
+import { TableFooter } from "components/TableFooter/TableFooter";
+import { formatUtcDate } from "utils/date";
 
-import { MoreActions } from "components/MoreActions/MoreActions.tsx";
-import { Delete } from "components/MoreActions/actions/Delete/Delete.tsx";
+import { MoreActions, Delete } from "components/MoreActions";
 
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
