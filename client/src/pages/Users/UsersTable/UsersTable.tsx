@@ -71,7 +71,7 @@ export const UsersTable = () => {
                     <Delete.SubmitText>Delete user</Delete.SubmitText>
                   </Delete>
 
-                  {/* Not in scope! Intentionally missing props/children */}
+                  {/* @ts-expect-error - Not in scope! Intentionally missing props/children */}
                   <Edit>
                     <Edit.Title>Edit user</Edit.Title>
                   </Edit>
