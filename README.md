@@ -2,13 +2,15 @@
 
 Hello! Thank you for taking the time to review my code. Please see a few notes and screen recordings below.
 
-Start the server:
+## How to run the app
+
+Start server:
 ```bash
 cd server
 npm run api
 ```
 
-Start the frontend (separate terminal):
+Start frontend (separate terminal):
 ```bash
 cd client
 npm run dev
