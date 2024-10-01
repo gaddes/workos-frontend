@@ -1,21 +1,16 @@
 # Screen Recordings
 
-## GET Users (w/ search & pagination)
+## Users (w/ search, pagination & delete)
 
-https://github.com/user-attachments/assets/fbabb95f-ff26-4bdd-a61d-68dd9618726d
+https://github.com/user-attachments/assets/0adb38f6-8993-4410-8c76-9d83f1ae049a
 
-## DELETE user (w/ success toast)
+## Roles (w/ search & edit)
 
-https://github.com/user-attachments/assets/8d6b7c78-87ad-4f34-ad96-c7539c22882f
+https://github.com/user-attachments/assets/9c3d98dd-e914-4a51-b58f-caa54c34f289
 
-## GET & EDIT Roles
+## Error handling
 
-https://github.com/user-attachments/assets/8215e1f2-7346-429b-a519-16426cee3715
-
-## Error & Empty states
-
-https://github.com/user-attachments/assets/a5a62dc8-ced0-4f72-9263-1a10eecfb19e
-
+https://github.com/user-attachments/assets/43a9ccd5-85ba-4b93-9450-46e8824c9779
 
 # My Notes
 
