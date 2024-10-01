@@ -1,3 +1,39 @@
+# Summary
+
+Hello! Thank you for taking the time to review my code. Please see a few notes and screen recordings below.
+
+## Tech stack
+
+- **Vite dev server** - Simple & fast, I can pick exactly which dependencies to use e.g. react-router for client-side navigation, RTK Query for data fetching, etc. The downside is that it takes a little longer to set up vs. a more fully-featured framework like Remix or Next.
+
+- **React Router** - The gold standard for client-side routing. The latest version even contains patterns for data fetching & mutations, taken from Remix. I opted to use RTK Query instead, partly due to familiarity, but also due to powerful features such as the ability to combining multiple payloads and transform the shape of data in one place.
+
+- **Radix UI** - I hadn't used Radix prior to this but thought I'd give it a go, since it's used at WorkOS. Really enjoyed it, beautifully designed components and a really well thought out developer experience. Minimal setup needed vs. something like Material UI or Ant Design.
+
+- **React Testing Library w/ vitest** - Allows us to "test like a user" and encourages accessibility through the use of matchers such as `getByRole` and `.toBeVisible()`. Given more time I would add even more comprehensive tests.
+
+- **Formik w/ yup** - Forms and client-side validation.
+
+## Given more time I would...
+
+1. Consider choosing a framework such as Remix. I like their focus on web fundamentals and the fact that react-router is built-in. It would also allow us to render pages on the server, if we decide that's optimal for performance or SEO reasons.
+
+2. Add a homepage or dashboard! Currently if we land on the root route, we redirect immediately to `/users`. However these tables seem better suited to an admin or settings page.
+
+## Ideas for improvements
+
+1. Add timezone to rows in Users table (e.g. PST)
+2. Order table rows by name, role, date, etc.
+3. Add filter pills for name, role, etc.
+4. Debounce search input
+5. Improve styling of toast messages and empty states
+6. In Users table, be more resilient to user name i.e. what if user doesn't have both a first/last name?
+7. Unsure why Radix UI buttons don't have `cursor: pointer` by default? Not sure if this is an intentional pattern, but we might want to change/enforce this by adding a bit of CSS.
+8. Both `Search` and `TableFooter` components assume that the data they receive has a certain structure, i.e. a `pages` property for the prev/next buttons, and that all endpoints use the `search` key for queries.
+9. `TableFooter` could be extended with a "slot" for other components e.g. total row count.
+10. All button text in Figma appears bold - make common `Button` component to enforce this.
+11. Add more comprehensive tests: test error toasts, user clicking menu item, etc. (see `@testing-library/user-event`)
+
 # Screen Recordings
 
 ## Users (w/ search, pagination & delete)
@@ -15,39 +51,3 @@ https://github.com/user-attachments/assets/43a9ccd5-85ba-4b93-9450-46e8824c9779
 ## Keyboard navigation
 
 https://github.com/user-attachments/assets/c1f2219e-c429-43d9-a564-7629171c0487
-
-# My Notes
-
-use vite to create the project
-pros - simple & blazing fast, allows me to pick & choose exactly what dependencies to use e.g. react-router for 
-client-side navigation, RTK Query for data fetching, etc.
-cons - takes a little longer to set up vs. something more fully-featured like remix or next
-
-What would I do differently next time? Use Remix - I like their focus on web fundamentals and the fact that 
-react-router is built-in. It would also allow us to render pages on the server, if we decide that's optimal for 
-performance or SEO reasons.
-
-Set default route to `/admin` - this gives us flexibility to change the homepage as needed in future. Maybe add a 
-dashboard or similar. This particular table looks more like it belongs on an admin or settings page.
-
-Use RTK Query for its features such as: built-in caching, ability to transform payloads, handling of loading/error
-states, etc. In future could use whatever our chosen framework provides, e.g. loaders/actions with Remix.
-
-# Ideas for Improvements
-
-- Make root route a dashboard - move existing table to an `/admin` route
-- In Users table, be more resilient to user name i.e. what if user doesn't have both a first/last name?
-- Add timezone to rows in Users table
-- Order table rows by name, role, date, etc.
-- Filter pills for name, role, etc.
-- Add local timestamp to users table (e.g. PST)
-- Debounce search input
-- Improve styling of "error" (Radix UI Toast primitive) and "no matching search results" messages
-- Why do Radix buttons not have `cursor: pointer` by default? Could fix this!
-- Both Search and TableFooter components assume that the data they receive has a certain structure, i.e. a `pages` 
-  property for the prev/next buttons, and that all endpoints use the `search` key for queries. 
-- TableFooter could be extended with a "slot" for other components e.g. total row count.
-- All button text in Figma appears bold - make common Button component to enforce this.
-- Add toast messages for API success/error states
-- Add number of users to Roles table (adjacent to role name)
-- Add more comprehensive tests: test error toasts, user clicking menu item, etc. (user-event)
