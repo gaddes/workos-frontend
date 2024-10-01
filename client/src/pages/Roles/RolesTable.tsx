@@ -20,7 +20,9 @@ export const RolesTable = () => {
   const [updateRole] = useUpdateRoleMutation();
 
   if (isError) {
-    toast.error("Error fetching roles. Please try again.");
+    toast.error("Error fetching roles. Please try again.", {
+      id: "fetch-error",
+    });
     return <Text>Error fetching roles. Please try again</Text>;
   }
 

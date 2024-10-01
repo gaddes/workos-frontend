@@ -16,7 +16,9 @@ export const UsersTable = () => {
   const [deleteUser] = useDeleteUserMutation();
 
   if (isError) {
-    toast.error("Error fetching users. Please try again.");
+    toast.error("Error fetching users. Please try again.", {
+      id: "fetch-error",
+    });
     return <Text>Error fetching users. Please try again</Text>;
   }
 
