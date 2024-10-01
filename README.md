@@ -12,6 +12,10 @@ https://github.com/user-attachments/assets/9c3d98dd-e914-4a51-b58f-caa54c34f289
 
 https://github.com/user-attachments/assets/43a9ccd5-85ba-4b93-9450-46e8824c9779
 
+## Keyboard navigation
+
+https://github.com/user-attachments/assets/c1f2219e-c429-43d9-a564-7629171c0487
+
 # My Notes
 
 use vite to create the project
