@@ -2,6 +2,20 @@
 
 Hello! Thank you for taking the time to review my code. Please see a few notes and screen recordings below.
 
+Start the server:
+```bash
+cd server
+npm run api
+```
+
+Start the frontend (separate terminal):
+```bash
+cd client
+npm run dev
+
+# => Open provided URL (http://localhost:5173/)
+```
+
 ## Tech stack
 
 - **Vite dev server** - Simple & fast, I can pick exactly which dependencies to use e.g. react-router for client-side navigation, RTK Query for data fetching, etc. The downside is that it takes a little longer to set up vs. a more fully-featured framework like Remix or Next.
