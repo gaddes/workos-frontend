@@ -18,6 +18,12 @@ npm run dev
 # => Open provided URL (http://localhost:5173/)
 ```
 
+Run tests:
+```
+cd client
+npm run test
+```
+
 ## Tech stack
 
 - **Vite dev server** - Simple & fast, I can pick exactly which dependencies to use e.g. react-router for client-side navigation, RTK Query for data fetching, etc. The downside is that it takes a little longer to set up vs. a more fully-featured framework like Remix or Next.
