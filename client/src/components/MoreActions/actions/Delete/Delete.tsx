@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/themes";
 import toast from "react-hot-toast";
 
-import { MoreActionsContext } from "../../MoreActions.context.tsx";
+import { MoreActionsContext } from "components/MoreActions";
 import { DeleteTitle } from "./DeleteTitle.tsx";
 import { DeleteDescription } from "./DeleteDescription.tsx";
 import { DeleteSubmitText } from "./DeleteSubmitText.tsx";
@@ -45,7 +45,7 @@ export const Delete: IDelete = ({ onClick, children }) => {
 
     try {
       await onClick().unwrap();
-      context.setOpen(false);
+      context.setId(null);
       toast.success("Item deleted");
     } catch {
       toast.error("Error deleting item. Please try again.");

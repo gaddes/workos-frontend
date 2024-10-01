@@ -3,18 +3,14 @@ import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 import styles from "./MoreActions.module.css";
-import {
-  MoreActionsContext,
-  MoreActionsProvider,
-} from "./MoreActions.context.tsx";
+import { MoreActionsContext } from "./MoreActions.context.tsx";
 
-interface IMoreActionsComponent {
+interface IMoreActions {
   children: React.ReactNode;
+  id: string;
 }
 
-const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
-  children,
-}) => {
+export const MoreActions: React.FC<IMoreActions> = ({ children, id }) => {
   const context = React.useContext(MoreActionsContext);
 
   if (!context) {
@@ -23,8 +19,9 @@ const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
     );
   }
 
-  const openDropdown = () => context.setOpen(true);
-  const closeDropdown = () => context.setOpen(false);
+  const isOpen = id === context.id;
+  const openDropdown = () => context.setId(id);
+  const closeDropdown = () => context.setId(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "Enter") {
@@ -33,7 +30,7 @@ const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
   };
 
   return (
-    <DropdownMenu.Root open={context.open}>
+    <DropdownMenu.Root open={isOpen}>
       <DropdownMenu.Trigger>
         <IconButton
           aria-label="more actions"
@@ -56,13 +53,3 @@ const MoreActionsComponent: React.FC<IMoreActionsComponent> = ({
     </DropdownMenu.Root>
   );
 };
-
-interface IMoreActions {
-  children: React.ReactNode;
-}
-
-export const MoreActions: React.FC<IMoreActions> = ({ children }) => (
-  <MoreActionsProvider>
-    <MoreActionsComponent>{children}</MoreActionsComponent>
-  </MoreActionsProvider>
-);

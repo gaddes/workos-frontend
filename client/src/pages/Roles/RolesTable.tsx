@@ -50,7 +50,7 @@ export const RolesTable = () => {
               <Table.Cell>{role.description}</Table.Cell>
               <Table.Cell>{role.isDefault.toString()}</Table.Cell>
               <Table.Cell justify="end">
-                <MoreActions>
+                <MoreActions id={role.id}>
                   <Edit
                     onClick={updateRole}
                     initialValues={{

@@ -10,7 +10,7 @@ import * as RadixForm from "@radix-ui/react-form";
 import { Formik, Form, useFormikContext } from "formik";
 import toast from "react-hot-toast";
 
-import { MoreActionsContext } from "../../MoreActions.context.tsx";
+import { MoreActionsContext } from "components/MoreActions";
 
 import styles from "./Edit.module.css";
 import { IEdit, IEditComponent } from "./Edit.types.ts";
@@ -66,7 +66,7 @@ export const EditComponent: React.FC<IEditComponent> = ({
 
     try {
       await onClick(values).unwrap();
-      context.setOpen(false);
+      context.setId(null);
       toast.success("Item updated");
     } catch {
       toast.error("Error updating item. Please try again.");

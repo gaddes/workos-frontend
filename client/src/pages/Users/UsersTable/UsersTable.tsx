@@ -58,7 +58,7 @@ export const UsersTable = () => {
               <Table.Cell>{user.role.name}</Table.Cell>
               <Table.Cell>{formatUtcDate(user.createdAt)}</Table.Cell>
               <Table.Cell justify="end">
-                <MoreActions>
+                <MoreActions id={user.id}>
                   <Delete onClick={() => deleteUser({ id: user.id })}>
                     <Delete.Title>Delete user</Delete.Title>
                     <Delete.Description>

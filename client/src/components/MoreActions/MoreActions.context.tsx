@@ -1,8 +1,8 @@
 import * as React from "react";
 
-interface IMoreActionsContext {
-  open: boolean;
-  setOpen: (open: boolean) => void;
+export interface IMoreActionsContext {
+  id: string | null;
+  setId: (id: string | null) => void;
 }
 
 interface IMoreActionsProvider {
@@ -18,10 +18,10 @@ MoreActionsContext.displayName = "MoreActionsContext";
 export const MoreActionsProvider: React.FC<IMoreActionsProvider> = ({
   children,
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [id, setId] = React.useState<string | null>(null);
 
   return (
-    <MoreActionsContext.Provider value={{ open, setOpen }}>
+    <MoreActionsContext.Provider value={{ id, setId }}>
       {children}
     </MoreActionsContext.Provider>
   );

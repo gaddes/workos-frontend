@@ -2,6 +2,7 @@ import { Button, Flex, Strong } from "@radix-ui/themes";
 import { PlusIcon } from "@radix-ui/react-icons";
 
 import { Search } from "components/Search/Search.tsx";
+import { MoreActionsProvider } from "components/MoreActions";
 import { UsersTable } from "./UsersTable/UsersTable.tsx";
 
 export const Users = () => (
@@ -14,6 +15,8 @@ export const Users = () => (
       </Button>
     </Flex>
 
-    <UsersTable />
+    <MoreActionsProvider>
+      <UsersTable />
+    </MoreActionsProvider>
   </Flex>
 );
