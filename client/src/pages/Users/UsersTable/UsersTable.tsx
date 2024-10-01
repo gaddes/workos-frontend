@@ -6,7 +6,7 @@ import { useDeleteUserMutation, useGetUsersQuery } from "api/workos.api";
 import { TableFooter } from "components/TableFooter/TableFooter";
 import { formatUtcDate } from "utils/date";
 
-import { MoreActions, Delete } from "components/MoreActions";
+import { MoreActions, Delete, Edit } from "components/MoreActions";
 
 export const UsersTable = () => {
   const { search: queryString } = useLocation();
@@ -70,6 +70,11 @@ export const UsersTable = () => {
                     </Delete.Description>
                     <Delete.SubmitText>Delete user</Delete.SubmitText>
                   </Delete>
+
+                  {/* Not in scope! Intentionally missing props/children */}
+                  <Edit>
+                    <Edit.Title>Edit user</Edit.Title>
+                  </Edit>
                 </MoreActions>
               </Table.Cell>
             </Table.Row>
