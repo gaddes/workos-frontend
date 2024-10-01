@@ -19,6 +19,8 @@ Hello! Thank you for taking the time to review my code. Please see a few notes a
 1. Consider choosing a framework such as Remix. I like their focus on web fundamentals and the fact that react-router is built-in. It would also allow us to render pages on the server, if we decide that's optimal for performance or SEO reasons.
 
 2. Add a homepage or dashboard! Currently if we land on the root route, we redirect immediately to `/users`. However these tables seem better suited to an admin or settings page.
+   
+3. Fix checkbox position in the reusable "Edit" component
 
 ## Ideas for improvements
 
