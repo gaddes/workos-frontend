@@ -19,7 +19,7 @@ npm run dev
 ```
 
 Run tests:
-```
+```bash
 cd client
 npm run test
 ```
