@@ -68,7 +68,7 @@ export const workosApi = createApi({
         method: "PATCH",
         body: args,
       }),
-      invalidatesTags: (_result, error) => (error ? [] : ["Roles"]),
+      invalidatesTags: (_result, error) => (error ? [] : ["Roles", "Users"]),
     }),
 
     getRoles: builder.query<GetRolesResponse, GetRolesArgs>({
